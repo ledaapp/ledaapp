@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐达助手 - 专业体育竞彩服务 | 线上便捷操作+线下实体出票</title>
+    <meta name="description" content="乐达助手（原鸿裕助手/彩虹之家）专注体育竞彩服务，与全国600+正规体彩实体店深度合作，线上选号线下实票，安全便捷零手续费。">
+    <style>
+        :root {
+            --bg-deep: #0a0f1a;
+            --bg-card: #111827;
+            --bg-surface: #1a1f2e;
+            --gold: #d4a843;
+            --gold-light: #e8c56d;
+            --gold-dark: #b8912e;
+            --green-safe: #10b981;
+            --green-bg: rgba(16, 185, 129, 0.08);
+            --blue-accent: #3b82f6;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+            --shadow-elevated: 0 4px 24px rgba(0, 0, 0, 0.5), 0 8px 40px rgba(0, 0, 0, 0.3);
+            --shadow-gold: 0 0 40px rgba(212, 168, 67, 0.2);
+            --radius-sm: 10px;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-heading: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            --font-body: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 10%, rgba(212, 168, 67, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 75% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 55%),
+                radial-gradient(ellipse at 40% 85%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+            opacity: 0.8;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 15, 26, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all var(--transition);
+            padding: 0 20px;
+        }
+        .navbar.scrolled {
+            background: rgba(10, 15, 26, 0.94);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        .nav-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: -0.3px;
+            font-family: var(--font-heading);
+            white-space: nowrap;
+        }
+        .nav-logo .logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #d4a843 0%, #e8c56d 50%, #c49530 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #1a1a0a;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(212, 168, 67, 0.35);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.92rem;
+            transition: all var(--transition);
+            font-weight: 500;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-cta {
+            background: linear-gradient(135deg, #d4a843, #c49530) !important;
+            color: #1a1a0a !important;
+            font-weight: 700 !important;
+            padding: 9px 20px !important;
+            border-radius: 22px !important;
+            letter-spacing: 0.3px !important;
+            box-shadow: 0 2px 12px rgba(212, 168, 67, 0.3);
+            transition: all var(--transition) !important;
+        }
+        .nav-cta:hover {
+            box-shadow: 0 4px 20px rgba(212, 168, 67, 0.5) !important;
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #e8c56d, #d4a843) !important;
+            color: #1a1a0a !important;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            color: #fff;
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 35%, rgba(212, 168, 67, 0.1) 0%, transparent 55%),
+                radial-gradient(ellipse at 30% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(16, 185, 129, 0.05) 0%, transparent 45%);
+            z-index: -1;
+        }
+        .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .hero-content {
+            max-width: 750px;
+            z-index: 2;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 7px 18px;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .hero-badge .dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10b981;
+            margin-right: 6px;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #e8c56d 0%, #d4a843 40%, #f0d078 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-alias {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            letter-spacing: 0.3px;
+        }
+        .hero-alias span {
+            color: #e8c56d;
+            font-weight: 500;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 26px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition);
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d4a843, #b8912e);
+            color: #1a1a0a;
+            box-shadow: var(--shadow-gold);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(212, 168, 67, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 44px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e8c56d;
+            letter-spacing: -0.5px;
+            font-family: var(--font-heading);
+        }
+        .hero-stat .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 16px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            background: rgba(212, 168, 67, 0.1);
+            color: #d4a843;
+            border: 1px solid rgba(212, 168, 67, 0.2);
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.3;
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 32px 28px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4a843, #e8c56d, #d4a843);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        .feature-card:hover {
+            border-color: rgba(212, 168, 67, 0.4);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-elevated);
+        }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            flex-shrink: 0;
+        }
+        .icon-safe {
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+        }
+        .icon-fast {
+            background: rgba(59, 130, 246, 0.12);
+            color: #3b82f6;
+        }
+        .icon-free {
+            background: rgba(168, 85, 247, 0.12);
+            color: #a855f7;
+        }
+        .icon-earn {
+            background: rgba(245, 158, 11, 0.12);
+            color: #f59e0b;
+        }
+        .icon-ai {
+            background: rgba(236, 72, 153, 0.12);
+            color: #ec4899;
+        }
+        .icon-community {
+            background: rgba(14, 165, 233, 0.12);
+            color: #0ea5e9;
+        }
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+            letter-spacing: -0.2px;
+        }
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+            line-height: 1.65;
+            margin: 0;
+        }
+        .feature-card .highlight-list {
+            list-style: none;
+            margin-top: 10px;
+            padding: 0;
+        }
+        .feature-card .highlight-list li {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            padding: 3px 0 3px 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+        .feature-card .highlight-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+            font-size: 0.8rem;
+            top: 3px;
+        }
+        .feature-card.safety-card {
+            border-color: rgba(16, 185, 129, 0.25);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, var(--bg-card) 40%);
+        }
+        .feature-card.safety-card::before {
+            background: linear-gradient(90deg, #10b981, #34d399, #10b981);
+        }
+
+        .safety-highlight {
+            background: var(--bg-surface);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .safety-item {
+            text-align: center;
+            padding: 16px;
+        }
+        .safety-item .s-icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        .safety-item .s-title {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .safety-item .s-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .stats-strip {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.06) 0%, rgba(16, 185, 129, 0.04) 100%);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .stats-strip-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .stat-block .big-num {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #e8c56d;
+            font-family: var(--font-heading);
+            letter-spacing: -0.5px;
+        }
+        .stat-block .big-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 2px;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-card {
+            background: linear-gradient(135deg, #1a1f2e 0%, #151a28 100%);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-xl);
+            padding: 50px 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-elevated);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 168, 67, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-card h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-card .cta-sub {
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+            font-size: 1rem;
+        }
+        .cta-card .btn {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            padding: 15px 36px;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.4);
+            border-top: 1px solid var(--border-subtle);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        .footer .warning-box {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: var(--radius);
+            padding: 16px 24px;
+            margin-bottom: 20px;
+            max-width: 700px;
+            text-align: left;
+            color: #fbbf24;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.2px;
+        }
+        .footer .warning-box .warn-icon {
+            margin-right: 6px;
+        }
+        .footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+        .footer .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(10, 15, 26, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 16px 20px;
+                border-bottom: 1px solid var(--border-subtle);
+                gap: 2px;
+                align-items: stretch;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                padding: 12px 16px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-stats {
+                gap: 20px;
+            }
+            .hero-stat .num {
+                font-size: 1.5rem;
+            }
+            .safety-highlight {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .btn {
+                padding: 11px 20px;
+                font-size: 0.9rem;
+            }
+            .safety-highlight {
+                grid-template-columns: 1fr;
+            }
+            .stats-strip-inner {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .cta-card {
+                padding: 30px 20px;
+            }
+            .cta-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-up 8s ease-in-out infinite;
+            opacity: 0.4;
+        }
+        @keyframes float-up {
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-30px) scale(1.2);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-15px) scale(0.9);
+                opacity: 0.35;
+            }
+            75% {
+                transform: translateY(-40px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">🌈</div>
+                乐达助手
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#safety">合规安全</a></li>
+                <li><a href="#features">核心功能</a></li>
+                <li><a href="#earn">发单跟单</a></li>
+                <li><a href="#community">社群</a></li>
+                <!-- 🔁 修改：导航栏“立即下载”按钮跳转至指定链接 -->
+                <li><a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="nav-cta">立即下载</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="particle" style="width:6px;height:6px;background:#d4a843;top:20%;left:15%;animation-delay:0s;"></div>
+        <div class="particle" style="width:4px;height:4px;background:#10b981;top:30%;right:20%;animation-delay:2s;"></div>
+        <div class="particle" style="width:8px;height:8px;background:#3b82f6;bottom:25%;left:25%;animation-delay:4s;"></div>
+        <div class="particle" style="width:5px;height:5px;background:#e8c56d;top:55%;right:12%;animation-delay:1.5s;"></div>
+        <div class="particle" style="width:3px;height:3px;background:#a855f7;bottom:35%;right:30%;animation-delay:5s;"></div>
+
+        <div class="hero-content fade-in">
+            <div class="hero-badge">
+                <span class="dot"></span>合规持牌 · 实体出票 · 安全可靠
+            </div>
+            <h1>
+                体育竞彩<br>就选<span class="highlight">乐达助手</span>
+            </h1>
+            <p class="hero-subtitle">
+                线上便捷选号，线下实体出票。<br>与<strong>全国600+正规体彩实体店</strong>深度合作，每一注都有真实彩票。
+            </p>
+            <p class="hero-alias">
+                原<span>鸿裕助手</span> · 别名<span>「彩虹之家」</span> —— 品牌焕新，初心不变
+            </p>
+            <div class="hero-buttons">
+                <!-- 🔁 修改：Hero区“立即下载APP”按钮跳转至指定链接 -->
+                <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="btn btn-primary">📱 立即下载APP</a>
+                <a href="#safety" class="btn btn-outline">🔒 了解安全保障</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num">600+</div>
+                    <div class="label">合作实体店</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">30万+</div>
+                    <div class="label">活跃用户</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">0</div>
+                    <div class="label">手续费</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num">2h</div>
+                    <div class="label">极速提现</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="safety">
+        <div class="section-inner">
+            <span class="section-tag">🛡️ 核心优势</span>
+            <h2 class="section-title">合规安全，真实可追溯</h2>
+            <p class="section-desc">
+                乐达助手坚持<strong>「线上操作+线下实体出票」</strong>模式，从源头杜绝虚拟票、空头票，让每一笔投注都有据可查。
+            </p>
+            <div class="features-grid">
+                <div class="feature-card safety-card fade-in">
+                    <div class="feature-icon icon-safe">🏪</div>
+                    <h3>实体出票保障</h3>
+                    <p>与全国<strong>600+正规体彩实体店</strong>深度合作，所有订单均由线下门店打印真实彩票。</p>
+                    <ul class="highlight-list">
+                        <li>附带门店公章与时间戳</li>
+                        <li>唯一序列号，高清票样回传</li>
+                        <li>APP内随时核验，真实可查</li>
+                    </ul>
+                </div>
+                <div class="feature-card safety-card fade-in">
+                    <div class="feature-icon icon-safe">🔒</div>
+                    <h3>杜绝风险</h3>
+                    <p>从源头避免<strong>虚拟票、空头票、吃票</strong>等问题，每一笔投注都有完整电子凭证和历史记录。</p>
+                    <ul class="highlight-list">
+                        <li>完整电子凭证存档</li>
+                        <li>历史订单永久可查</li>
+                        <li>透明公开，杜绝暗箱操作</li>
+                    </ul>
+                </div>
+                <div class="feature-card safety-card fade-in">
+                    <div class="feature-icon icon-safe">🏦</div>
+                    <h3>资金安全</h3>
+                    <p>采用<strong>三重实名认证 + 银行级数据加密</strong>技术，资金安全托管，中奖奖金自动到账。</p>
+                    <ul class="highlight-list">
+                        <li>三重实名认证机制</li>
+                        <li>银行级SSL加密传输</li>
+                        <li>中奖自动结算，流程透明</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="safety-highlight fade-in">
+                <div class="safety-item">
+                    <div class="s-icon">📋</div>
+                    <div class="s-title">实名认证</div>
+                    <div class="s-desc">身份证+手机号+银行卡<br>三重验证保障账户安全</div>
+                </div>
+                <div class="safety-item">
+                    <div class="s-icon">🔐</div>
+                    <div class="s-title">数据加密</div>
+                    <div class="s-desc">银行级SSL/TLS加密<br>用户隐私数据全程保护</div>
+                </div>
+                <div class="safety-item">
+                    <div class="s-icon">💰</div>
+                    <div class="s-title">资金托管</div>
+                    <div class="s-desc">独立资金托管渠道<br>中奖自动到账，0延迟</div>
+                </div>
+                <div class="safety-item">
+                    <div class="s-icon">✅</div>
+                    <div class="s-title">合规经营</div>
+                    <div class="s-desc">严格遵循体彩管理规定<br>正规代销，合法合规</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-strip fade-in">
+        <div class="stats-strip-inner">
+            <div class="stat-block">
+                <div class="big-num">600+</div>
+                <div class="big-label">合作正规体彩实体店</div>
+            </div>
+            <div class="stat-block">
+                <div class="big-num">99.8%</div>
+                <div class="big-label">出票成功率</div>
+            </div>
+            <div class="stat-block">
+                <div class="big-num">2小时</div>
+                <div class="big-label">提现最快到账</div>
+            </div>
+            <div class="stat-block">
+                <div class="big-num">0元</div>
+                <div class="big-label">充值/提现/佣金手续费</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="features">
+        <div class="section-inner">
+            <span class="section-tag">⚡ 产品体验</span>
+            <h2 class="section-title">便捷高效，体验流畅</h2>
+            <p class="section-desc">足不出户完成投注，界面清爽、操作简单，新手也能快速上手。</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-fast">📱</div>
+                    <h3>足不出户购彩</h3>
+                    <p>手机端一键选号、快速支付，无需奔波线下门店排队，随时随地完成投注，真正实现指尖上的便捷。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-fast">🎯</div>
+                    <h3>操作极简</h3>
+                    <p>界面清爽易上手，功能模块划分合理，整个流程简化至<strong>四步</strong>：选赛事→选玩法→确认→支付出票。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-fast">📊</div>
+                    <h3>性能稳定</h3>
+                    <p>直播超清不卡顿，数据<strong>秒级更新</strong>。场上刚吹哨，比分、赔率即刻同步到位，快人一步。</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-fast">🎫</div>
+                    <h3>门槛低 · 玩法多</h3>
+                    <p>起投金额低至<strong>20元</strong>，支持多种热门体彩玩法，串关最高可串<strong>10场</strong>，满足不同策略需求。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-tag">💎 经济实惠</span>
+            <h2 class="section-title">零手续费，提现迅速</h2>
+            <p class="section-desc">全程透明，没有任何隐形消费，让每一分钱都花在投注上。</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-free">🆓</div>
+                    <h3>全程0手续费</h3>
+                    <p>充值、提现、佣金结算<strong>全部0手续费</strong>，没有任何额外费用，真正做到经济实惠。</p>
+                    <ul class="highlight-list">
+                        <li>充值0手续费</li>
+                        <li>提现0手续费</li>
+                        <li>佣金结算0手续费</li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-free">⚡</div>
+                    <h3>提现速度快</h3>
+                    <p>派奖不磨叽，提现快至<strong>2小时内到账</strong>（具体以银行处理为准），所有流水电子凭证随时可查。</p>
+                    <ul class="highlight-list">
+                        <li>最快2小时到账</li>
+                        <li>电子凭证随时可查</li>
+                        <li>流水记录完整透明</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="earn">
+        <div class="section-inner">
+            <span class="section-tag">🤝 双向受益</span>
+            <h2 class="section-title">发单赚佣，一键跟单</h2>
+            <p class="section-desc">打造竞彩达人生态，让专业分析产生价值，让新手少走弯路。</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-earn">💡</div>
+                    <h3>发单赚佣金</h3>
+                    <p>个人赛事分析方案<strong>一键发布</strong>，他人跟随下单即可赚取相应佣金，轻松实现"以彩养彩"。</p>
+                    <ul class="highlight-list">
+                        <li>分析方案一键发布</li>
+                        <li>他人跟单自动结算佣金</li>
+                        <li>优质方案获得平台推荐</li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-earn">🎓</div>
+                    <h3>一键跟单</h3>
+                    <p>参考平台高手、达人的<strong>稳定分析方案</strong>，降低盲目投注风险，特别适合新手入门学习。</p>
+                    <ul class="highlight-list">
+                        <li>高手方案透明展示</li>
+                        <li>历史战绩可追溯</li>
+                        <li>新手友好，降低试错成本</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-tag">🧠 智能辅助</span>
+            <h2 class="section-title">贴心功能，理性投注</h2>
+            <p class="section-desc">用科技守护理性，让每一注都经过深思熟虑。</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-ai">🛡️</div>
+                    <h3>理性投注守护阀</h3>
+                    <p>允许用户<strong>自定义每日/每周投注上限</strong>，一旦超限系统自动拦截并发出提醒，帮助保持理性。</p>
+                    <ul class="highlight-list">
+                        <li>自定义投注上限额度</li>
+                        <li>超限自动拦截+提醒</li>
+                        <li>培养健康投注习惯</li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-ai">🤖</div>
+                    <h3>AI赛事剧本杀</h3>
+                    <p><strong>"AI赛事剧本杀"</strong>功能生成多套投注方案，清晰标注<strong>爆冷概率与胜率</strong>，为决策提供数据参考。</p>
+                    <ul class="highlight-list">
+                        <li>多套方案智能生成</li>
+                        <li>爆冷概率清晰标注</li>
+                        <li>胜率数据辅助决策</li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-ai">📰</div>
+                    <h3>专业赛事资讯</h3>
+                    <p>每日更新<strong>深度赛事解读</strong>，覆盖球队动态、战术简析、硬核数据参考，全方位梳理关键信息。</p>
+                    <ul class="highlight-list">
+                        <li>每日深度赛事解读</li>
+                        <li>球队动态+战术简析</li>
+                        <li>硬核数据一目了然</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="community">
+        <div class="section-inner">
+            <span class="section-tag">💬 球迷阵地</span>
+            <h2 class="section-title">社群交流，氛围友好</h2>
+            <p class="section-desc">30万真正热爱足球的同路人，打造文明聊球、理性交流的友好阵地。</p>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-community">⚽</div>
+                    <h3>纯净球迷社群添加微信：KT88100</h3>
+                    <p>聚集了<strong>30万真正热爱足球的同路人</strong>，打造文明聊球、理性交流的友好阵地，拒绝低质灌水。</p>
+                    <ul class="highlight-list">
+                        <li>30万+真实球迷</li>
+                        <li>文明聊球氛围</li>
+                        <li>严格社区管理</li>
+                    </ul>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon icon-community">🎙️</div>
+                    <h3>互动丰富客服联系：ly5379y</h3>
+                    <p>大赛期间<strong>24小时开放</strong>，资深解说在线拆解战术，用户可晒红单、交流预测思路，共享赛事激情。</p>
+                    <ul class="highlight-list">
+                        <li>24小时大赛直播互动</li>
+                        <li>资深解说战术拆解</li>
+                        <li>晒红单·交流预测</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="download">
+        <div class="cta-card fade-in">
+            <h2>🎯 准备好体验了吗？</h2>
+            <p class="cta-sub">
+                下载<strong>乐达助手</strong>，享受<br>
+                <span style="color:#e8c56d;">线上便捷操作 + 线下实体出票</span> 的安全购彩体验
+            </p>
+            <!-- 🔁 修改：CTA区域“立即下载乐达助手APP”按钮跳转至指定链接 -->
+            <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="btn btn-primary" style="font-size:1.15rem;padding:16px 40px;">
+                📱 立即下载乐达助手APP
+            </a>
+            <p style="margin-top:18px;color:var(--text-muted);font-size:0.85rem;">
+                支持 iOS / Android · 安装包安全检测通过 ✅
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="warning-box">
+            <span class="warn-icon">⚠️</span><strong>重要提醒：</strong>体育竞彩存在风险，请务必理性投注，量力而行。本工具仅供辅助参考，不构成任何投注建议。未成年人禁止购彩。
+        </div>
+        <div class="footer-links">
+            <a href="#safety">安全保障</a>
+            <a href="#features">功能介绍</a>
+            <!-- 🔁 修改：页脚“下载APP”链接跳转至指定链接 -->
+            <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623">下载APP</a>
+            <a href="#">隐私政策</a>
+            <a href="#">用户协议</a>
+        </div>
+        <p>乐达助手（原鸿裕助手 · 别名「彩虹之家」）— 专业体育竞彩辅助工具</p>
+        <p style="margin-top:4px;">与全国600+正规体彩实体店深度合作 | 合规经营 | 理性投注</p>
+        <p style="margin-top:8px;opacity:0.6;">© 2024 乐达助手 · 版权所有</p>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            navToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                navToggle.textContent = '☰';
+            });
+        });
+
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        fadeEls.forEach(el => observer.observe(el));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                setTimeout(() => {
+                    heroContent.classList.add('visible');
+                }, 100);
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
