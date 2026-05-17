@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>乐达助手 - 专业体育竞彩服务 | 线上便捷操作+线下实体出票</title>
     <meta name="description" content="乐达助手（原鸿裕助手/彩虹之家）专注体育竞彩服务，与全国600+正规体彩实体店深度合作，线上选号线下实票，安全便捷零手续费。">
+
+    <!-- 添加网站图标 Favicon -->
+    <link rel="icon" type="image/jpeg" sizes="180x180" href="https://s3.bmp.ovh/2026/05/16/OKAkuMRT.jpg">
+    <link rel="apple-touch-icon" type="image/jpeg" sizes="180x180" href="https://s3.bmp.ovh/2026/05/16/OKAkuMRT.jpg">
+
     <style>
         :root {
             --bg-deep: #0a0f1a;
@@ -107,19 +112,12 @@
             font-family: var(--font-heading);
             white-space: nowrap;
         }
-        .nav-logo .logo-icon {
-            width: 38px;
+        /* 替换 Logo 图片样式 */
+        .nav-logo .logo-img {
             height: 38px;
+            width: auto;
             border-radius: 10px;
-            background: linear-gradient(135deg, #d4a843 0%, #e8c56d 50%, #c49530 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #1a1a0a;
-            flex-shrink: 0;
-            box-shadow: 0 4px 14px rgba(212, 168, 67, 0.35);
+            display: block;
         }
         .nav-links {
             display: flex;
@@ -334,6 +332,102 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 2px;
+        }
+
+        /* 专属联系卡片样式 */
+        .contact-card {
+            background: rgba(212, 168, 67, 0.05);
+            border: 1px solid rgba(212, 168, 67, 0.25);
+            border-radius: var(--radius-lg);
+            padding: 18px 24px;
+            margin: 28px auto 0;
+            max-width: 500px;
+            backdrop-filter: blur(4px);
+            transition: all var(--transition);
+        }
+        .contact-card:hover {
+            border-color: rgba(212, 168, 67, 0.6);
+            background: rgba(212, 168, 67, 0.08);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-label {
+            font-weight: 600;
+            color: #e8c56d;
+            letter-spacing: 0.3px;
+            font-size: 0.95rem;
+        }
+        .contact-value {
+            font-family: monospace;
+            font-size: 1.05rem;
+            font-weight: 500;
+            background: rgba(0,0,0,0.3);
+            padding: 4px 12px;
+            border-radius: 24px;
+            letter-spacing: 0.5px;
+        }
+        .copy-btn {
+            background: rgba(212, 168, 67, 0.15);
+            border: none;
+            color: #e8c56d;
+            cursor: pointer;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(2px);
+        }
+        .copy-btn:hover {
+            background: #d4a843;
+            color: #1a1a0a;
+            transform: scale(0.98);
+        }
+        .copy-btn:active {
+            transform: scale(0.96);
+        }
+        .contact-tagline {
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 8px;
+            color: var(--text-muted);
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.9);
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            color: #e8c56d;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.2s, transform 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+            border: 1px solid rgba(212,168,67,0.5);
+        }
+        .toast-msg.show {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
         }
 
         .section {
@@ -680,6 +774,13 @@
             .safety-highlight {
                 grid-template-columns: 1fr 1fr;
             }
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .copy-btn {
+                align-self: flex-end;
+            }
         }
         @media (max-width: 480px) {
             .hero h1 {
@@ -747,8 +848,9 @@
     <nav class="navbar" id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
-                <div class="logo-icon">🌈</div>
-                乐达助手
+                <!-- 修改：使用指定的图片替换原有的图标 -->
+                <img src="https://s3.bmp.ovh/2026/05/16/OKAkuMRT.jpg" alt="乐达助手" class="logo-img">
+                <span>乐达助手</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
             <ul class="nav-links" id="navLinks">
@@ -756,7 +858,6 @@
                 <li><a href="#features">核心功能</a></li>
                 <li><a href="#earn">发单跟单</a></li>
                 <li><a href="#community">社群</a></li>
-                <!-- 🔁 修改：导航栏“立即下载”按钮跳转至指定链接 -->
                 <li><a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="nav-cta">立即下载</a></li>
             </ul>
         </div>
@@ -784,7 +885,6 @@
                 原<span>鸿裕助手</span> · 别名<span>「彩虹之家」</span> —— 品牌焕新，初心不变
             </p>
             <div class="hero-buttons">
-                <!-- 🔁 修改：Hero区“立即下载APP”按钮跳转至指定链接 -->
                 <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="btn btn-primary">📱 立即下载APP</a>
                 <a href="#safety" class="btn btn-outline">🔒 了解安全保障</a>
             </div>
@@ -805,6 +905,20 @@
                     <div class="num">2h</div>
                     <div class="label">极速提现</div>
                 </div>
+            </div>
+
+            <div class="contact-card fade-in">
+                <div class="contact-item">
+                    <span class="contact-label">📞 专属联系：</span>
+                    <span class="contact-value">KT88100</span>
+                    <button class="copy-btn" data-copy="KT88100">📋 复制</button>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">💬 备用V：</span>
+                    <span class="contact-value">LY5379Y</span>
+                    <button class="copy-btn" data-copy="LY5379Y">📋 复制</button>
+                </div>
+                <div class="contact-tagline">👥 添加时请备注“乐达助手”</div>
             </div>
         </div>
     </section>
@@ -1032,7 +1146,7 @@
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon icon-community">⚽</div>
-                    <h3>纯净球迷社群添加微信：KT88100</h3>
+                    <h3>纯净球迷社群</h3>
                     <p>聚集了<strong>30万真正热爱足球的同路人</strong>，打造文明聊球、理性交流的友好阵地，拒绝低质灌水。</p>
                     <ul class="highlight-list">
                         <li>30万+真实球迷</li>
@@ -1042,7 +1156,7 @@
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon icon-community">🎙️</div>
-                    <h3>互动丰富客服联系：ly5379y</h3>
+                    <h3>互动丰富</h3>
                     <p>大赛期间<strong>24小时开放</strong>，资深解说在线拆解战术，用户可晒红单、交流预测思路，共享赛事激情。</p>
                     <ul class="highlight-list">
                         <li>24小时大赛直播互动</li>
@@ -1050,6 +1164,20 @@
                         <li>晒红单·交流预测</li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="contact-card fade-in" style="margin-top: 32px;">
+                <div class="contact-item">
+                    <span class="contact-label">📞 专属联系：</span>
+                    <span class="contact-value">KT88100</span>
+                    <button class="copy-btn" data-copy="KT88100">📋 复制</button>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">💬 备用V：</span>
+                    <span class="contact-value">LY5379Y</span>
+                    <button class="copy-btn" data-copy="LY5379Y">📋 复制</button>
+                </div>
+                <div class="contact-tagline">✨ 加入社群请备注“乐达”，畅聊赛事，共享红单</div>
             </div>
         </div>
     </section>
@@ -1061,7 +1189,6 @@
                 下载<strong>乐达助手</strong>，享受<br>
                 <span style="color:#e8c56d;">线上便捷操作 + 线下实体出票</span> 的安全购彩体验
             </p>
-            <!-- 🔁 修改：CTA区域“立即下载乐达助手APP”按钮跳转至指定链接 -->
             <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623" class="btn btn-primary" style="font-size:1.15rem;padding:16px 40px;">
                 📱 立即下载乐达助手APP
             </a>
@@ -1078,7 +1205,6 @@
         <div class="footer-links">
             <a href="#safety">安全保障</a>
             <a href="#features">功能介绍</a>
-            <!-- 🔁 修改：页脚“下载APP”链接跳转至指定链接 -->
             <a href="https://daxau.ltdp16.com/#/pages/tabBar/reg/reg?aid=623">下载APP</a>
             <a href="#">隐私政策</a>
             <a href="#">用户协议</a>
@@ -1087,6 +1213,8 @@
         <p style="margin-top:4px;">与全国600+正规体彩实体店深度合作 | 合规经营 | 理性投注</p>
         <p style="margin-top:8px;opacity:0.6;">© 2024 乐达助手 · 版权所有</p>
     </footer>
+
+    <div id="copyToast" class="toast-msg">✅ 已复制</div>
 
     <script>
         const navbar = document.getElementById('navbar');
@@ -1140,6 +1268,54 @@
                     const offset = 80;
                     const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
                     window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+
+        const toast = document.getElementById('copyToast');
+        let toastTimeout = null;
+
+        function showCopyMessage(text) {
+            toast.innerText = `✅ 已复制: ${text}`;
+            toast.classList.add('show');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 1800);
+        }
+
+        async function copyToClipboard(text, btnElement) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showCopyMessage(text);
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = '✓ 已复制';
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                }, 1000);
+            } catch (err) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showCopyMessage(text);
+                const originalText = btnElement.innerHTML;
+                btnElement.innerHTML = '✓ 已复制';
+                setTimeout(() => {
+                    btnElement.innerHTML = originalText;
+                }, 1000);
+            }
+        }
+
+        const copyBtns = document.querySelectorAll('.copy-btn');
+        copyBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const copyValue = btn.getAttribute('data-copy');
+                if (copyValue) {
+                    copyToClipboard(copyValue, btn);
                 }
             });
         });
